@@ -44,8 +44,7 @@ namespace DemoAPiForDemo.Model
         public string Org_TeleNo { get; set; }
 
 
-        [MinLength(10)]
-        [MaxLength(14)]
+        [Range(10,14)]
         [Required]
         public int Team_Size { get; set; }
     }

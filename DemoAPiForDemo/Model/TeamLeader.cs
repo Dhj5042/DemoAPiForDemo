@@ -8,7 +8,7 @@ namespace DemoAPiForDemo.Model
 {
     public class TeamLeader : BaseEntity
     {
-        public string TeamLeader_Name { get; set; }
+        
 
         public string userId { get; set; }
         [ForeignKey("userId")]

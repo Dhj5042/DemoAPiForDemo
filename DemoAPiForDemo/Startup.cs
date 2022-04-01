@@ -1,5 +1,8 @@
+using DemoAPiForDemo.Configration;
+using DemoAPiForDemo.Contracts;
 using DemoAPiForDemo.Data;
 using DemoAPiForDemo.Model;
+using DemoAPiForDemo.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,7 +42,14 @@ namespace DemoAPiForDemo
             services.AddDbContext<ApplicationContext>(context =>
             context.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IOrganizationRepository), typeof(OrganizationRepository));
+            services.AddScoped(typeof(ITeamLeaderRepositories), typeof(TeamLeaderRepositories));
+           services.AddScoped(typeof(ITeamMateRepositories), typeof(TeamMateRepositories));
+            services.AddAutoMapper(typeof(MapperConfig));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

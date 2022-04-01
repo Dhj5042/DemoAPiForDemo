@@ -22,6 +22,7 @@ namespace DemoAPiForDemo.Model
         [ForeignKey("Defination_Id")]
         public Defination Defination { get; set; }
         public int Defination_Id { get; set; }
+        public bool IsAvailable { get; set; }
 
     }
 }
